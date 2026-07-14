@@ -6,40 +6,39 @@ import { postUrl, formatDate, byDateDesc } from '../utils';
 
 const posts = (await getCollection('posts', ({ data }) => !data.draft))
   .sort(byDateDesc)
-  .slice(0, 5);
+  .slice(0, 6);
 ---
 
-<Base description={SITE_DESCRIPTION}>
-  <section class="hero">
-    <h1>Hey, I'm Aditya.</h1>
-    <p>
-      This is my corner of the internet — the stuff going on in my life and the way I
-      think about it, split into four buckets. Read enough of it and you'll pretty much
-      get me.
-    </p>
-  </section>
+<Base description={SITE_DESCRIPTION} full>
+  <div class="home-fill">
+    <section class="hero">
+      <h1>Hey, I'm Aditya.</h1>
+      <p>
+        This is my corner of the internet — the stuff going on in my life and the way I
+        think about it, split into four buckets. Read enough of it and you'll pretty
+        much get me.
+      </p>
+    </section>
 
-  <ul class="squares">
-    {
-      CATEGORY_KEYS.map((key) => (
-        <li class="square" style={`--accent: ${CATEGORIES[key].color}`}>
-          <a href={`/${key}/`}>
-            <p class="tagline">{CATEGORIES[key].tagline}</p>
+    <div class="tiles">
+      {
+        CATEGORY_KEYS.map((key) => (
+          <a class="tile" href={`/${key}/`}>
             <h2>{CATEGORIES[key].name}</h2>
             <p class="blurb">{CATEGORIES[key].blurb}</p>
           </a>
-        </li>
-      ))
-    }
-  </ul>
+        ))
+      }
+    </div>
+  </div>
 
   {
     posts.length > 0 && (
-      <section>
+      <section class="recent">
         <p class="section-label">Recent posts</p>
         <ul class="post-list">
           {posts.map((post) => (
-            <li style={`--accent: ${CATEGORIES[post.data.category].color}`}>
+            <li>
               <a class="post-title" href={postUrl(post)}>
                 {post.data.title}
               </a>

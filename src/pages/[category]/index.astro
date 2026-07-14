@@ -16,19 +16,18 @@ const posts = (
 ---
 
 <Base title={meta.name} description={meta.blurb}>
-  <header class="category-header" style={`--accent: ${meta.color}`}>
-    <p class="section-label">{meta.tagline}</p>
+  <header class="category-header">
     <h1>{meta.name}</h1>
     <p>{meta.blurb}</p>
   </header>
 
   {
     posts.length === 0 ? (
-      <p style="color: var(--text-muted); padding: 1.5rem 0;">
+      <p style="color: var(--muted); padding: 1.5rem 0;">
         Nothing here yet — first post coming soon.
       </p>
     ) : (
-      <ul class="post-list" style={`--accent: ${meta.color}`}>
+      <ul class="post-list">
         {posts.map((post) => (
           <li>
             <a class="post-title" href={postUrl(post)}>
