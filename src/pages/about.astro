@@ -22,10 +22,10 @@ import { CATEGORIES, CATEGORY_KEYS } from '../consts';
       {
         CATEGORY_KEYS.map((key) => (
           <li>
-            <a href={`/${key}/`} style={`color: ${CATEGORIES[key].color}`}>
+            <a href={`/${key}/`}>
               <strong>{CATEGORIES[key].name}</strong>
             </a>{' '}
-            — {CATEGORIES[key].tagline}
+            — {CATEGORIES[key].blurb}
           </li>
         ))
       }
