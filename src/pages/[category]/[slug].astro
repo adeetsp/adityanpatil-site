@@ -1,0 +1,37 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { CATEGORIES } from '../../consts';
+import { postSlug, formatDate } from '../../utils';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { category: post.data.category, slug: postSlug(post) },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const meta = CATEGORIES[post.data.category];
+const { Content } = await render(post);
+---
+
+<Base title={post.data.title} description={post.data.description} ogType="article">
+  <article style={`--accent: ${meta.color}`}>
+    <header class="post-header">
+      <p class="post-meta">
+        <a class="chip" href={`/${post.data.category}/`}>{meta.name}</a>
+        <time datetime={post.data.pubDate.toISOString()}>
+          {formatDate(post.data.pubDate)}
+        </time>
+      </p>
+      <h1>{post.data.title}</h1>
+    </header>
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+
+  <a class="back-link" href={`/${post.data.category}/`}>← more {meta.name.toLowerCase()}</a>
+</Base>

@@ -1,0 +1,352 @@
+:root {
+  --bg: #faf9f7;
+  --bg-raised: #ffffff;
+  --text: #1c1b1a;
+  --text-muted: #6b6864;
+  --border: #e5e2dd;
+  --link: #1c1b1a;
+
+  --c-personal: #d95f43;
+  --c-physical: #2f9464;
+  --c-professional: #2f6fd0;
+  --c-philosophical: #8557c9;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif;
+  --font-serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #17161a;
+    --bg-raised: #201f24;
+    --text: #eceae6;
+    --text-muted: #9d9a94;
+    --border: #33313a;
+    --link: #eceae6;
+
+    --c-personal: #e8836b;
+    --c-physical: #4db787;
+    --c-professional: #6b9be6;
+    --c-philosophical: #a983e0;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 4rem;
+}
+
+a {
+  color: var(--link);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  opacity: 0.75;
+}
+
+h1, h2, h3 {
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* ---------- header / footer ---------- */
+
+.site-header {
+  max-width: 44rem;
+  margin: 0 auto;
+  width: 100%;
+  padding: 1.25rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.site-header .wordmark {
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-decoration: none;
+}
+
+.site-header nav {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.9rem;
+}
+
+.site-header nav a {
+  text-decoration: none;
+  color: var(--text-muted);
+}
+
+.site-header nav a:hover,
+.site-header nav a[aria-current='page'] {
+  color: var(--text);
+  opacity: 1;
+}
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 1.25rem 2.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.site-footer a {
+  color: inherit;
+}
+
+/* ---------- homepage ---------- */
+
+.hero {
+  padding: 3rem 0 2.25rem;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 6vw, 2.8rem);
+  margin: 0 0 0.75rem;
+}
+
+.hero p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  max-width: 36rem;
+  margin: 0;
+}
+
+.squares {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.9rem;
+  padding: 0;
+  margin: 0 0 3rem;
+  list-style: none;
+}
+
+@media (max-width: 480px) {
+  .squares {
+    grid-template-columns: 1fr;
+  }
+}
+
+.square {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--bg-raised);
+  overflow: hidden;
+}
+
+.square a {
+  display: block;
+  padding: 1.5rem 1.25rem 1.35rem;
+  text-decoration: none;
+  height: 100%;
+}
+
+.square::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: var(--accent);
+}
+
+.square h2 {
+  margin: 0 0 0.2rem;
+  font-size: 1.25rem;
+  color: var(--accent);
+}
+
+.square .tagline {
+  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.square p.blurb {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--text);
+}
+
+.square:hover {
+  border-color: var(--accent);
+}
+
+/* ---------- post lists ---------- */
+
+.post-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.post-list li {
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.post-list .post-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.post-list .post-meta {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0.25rem 0 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.post-list .post-desc {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.chip {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  border-radius: 999px;
+  padding: 0.1rem 0.55rem;
+  text-decoration: none;
+}
+
+/* ---------- category page ---------- */
+
+.category-header {
+  padding: 2.25rem 0 1rem;
+  border-bottom: 3px solid var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.category-header h1 {
+  margin: 0 0 0.5rem;
+  color: var(--accent);
+}
+
+.category-header p {
+  margin: 0;
+  color: var(--text-muted);
+  max-width: 36rem;
+}
+
+/* ---------- single post ---------- */
+
+.post-header {
+  padding: 2.25rem 0 0;
+}
+
+.post-header h1 {
+  font-size: clamp(1.7rem, 5vw, 2.3rem);
+  margin: 0.6rem 0;
+}
+
+.post-header .post-meta {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.prose {
+  font-family: var(--font-serif);
+  font-size: 1.08rem;
+  line-height: 1.75;
+  max-width: 65ch;
+}
+
+.prose h2 {
+  font-family: var(--font-sans);
+  font-size: 1.35rem;
+  margin-top: 2.2rem;
+}
+
+.prose h3 {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+}
+
+.prose blockquote {
+  margin: 1.5rem 0;
+  padding: 0.25rem 0 0.25rem 1.1rem;
+  border-left: 3px solid var(--accent, var(--border));
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.prose hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2.5rem auto;
+  width: 40%;
+}
+
+.prose code {
+  font-size: 0.9em;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+}
+
+.section-label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin: 0 0 0.25rem;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}

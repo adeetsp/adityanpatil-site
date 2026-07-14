@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import { CATEGORIES, CATEGORY_KEYS } from '../consts';
+---
+
+<Base title="About" description="Who Aditya is and why this site exists.">
+  <article class="post-header">
+    <h1>About this place</h1>
+  </article>
+  <div class="prose">
+    <p>
+      Hey — I'm Aditya. I work in marketing at a software security startup, I'm
+      usually training for something, and I spend a lot of time thinking about how to
+      live well and then talking about it to anyone who'll listen. This site is me
+      writing it down instead.
+    </p>
+    <p>
+      The whole thing is organized into four buckets — I think of them as the four
+      P's:
+    </p>
+    <ul>
+      {
+        CATEGORY_KEYS.map((key) => (
+          <li>
+            <a href={`/${key}/`} style={`color: ${CATEGORIES[key].color}`}>
+              <strong>{CATEGORIES[key].name}</strong>
+            </a>{' '}
+            — {CATEGORIES[key].tagline}
+          </li>
+        ))
+      }
+    </ul>
+    <p>
+      The goal is simple: if you read this site, you'll understand me. Not the
+      LinkedIn version — the actual person. Friends and family can catch up on my
+      life, people I work with can see how I think, and future me can look back and
+      cringe a little.
+    </p>
+    <p>
+      If something here resonates (or you think I'm completely wrong), reach out —
+      I genuinely love talking about this stuff.
+    </p>
+  </div>
+</Base>

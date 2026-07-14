@@ -1,0 +1,50 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { CATEGORIES, CATEGORY_KEYS, type CategoryKey } from '../../consts';
+import { postUrl, formatDate, byDateDesc } from '../../utils';
+
+export function getStaticPaths() {
+  return CATEGORY_KEYS.map((category) => ({ params: { category } }));
+}
+
+const { category } = Astro.params as { category: CategoryKey };
+const meta = CATEGORIES[category];
+const posts = (
+  await getCollection('posts', ({ data }) => data.category === category && !data.draft)
+).sort(byDateDesc);
+---
+
+<Base title={meta.name} description={meta.blurb}>
+  <header class="category-header" style={`--accent: ${meta.color}`}>
+    <p class="section-label">{meta.tagline}</p>
+    <h1>{meta.name}</h1>
+    <p>{meta.blurb}</p>
+  </header>
+
+  {
+    posts.length === 0 ? (
+      <p style="color: var(--text-muted); padding: 1.5rem 0;">
+        Nothing here yet — first post coming soon.
+      </p>
+    ) : (
+      <ul class="post-list" style={`--accent: ${meta.color}`}>
+        {posts.map((post) => (
+          <li>
+            <a class="post-title" href={postUrl(post)}>
+              {post.data.title}
+            </a>
+            <p class="post-meta">
+              <time datetime={post.data.pubDate.toISOString()}>
+                {formatDate(post.data.pubDate)}
+              </time>
+            </p>
+            <p class="post-desc">{post.data.description}</p>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  <a class="back-link" href="/">← back home</a>
+</Base>

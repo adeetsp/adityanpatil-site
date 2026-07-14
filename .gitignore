@@ -1,0 +1,13 @@
+# build output
+dist/
+.astro/
+
+# dependencies
+node_modules/
+
+# private — writing voice guide and workflow notes, never publish
+voice/
+
+# misc
+.DS_Store
+*.log
