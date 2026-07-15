@@ -11,8 +11,10 @@ heard it enough times that I want to write about it, because I think the notion 
 wrong.
 
 When I was running my own little consulting company, people would say it all the
-time — "wow, you're so good at uncertainty." And the thing I keep reflecting on is:
-it never *felt* like uncertainty. Not because I'm wired differently, but because of
+time — "wow, you're so good at uncertainty." Or the other version: "oh my god,
+you're so *brave* for doing this." And every time, my honest reaction was: it's not
+bravery. Just do the fucking thing. Like — just do the thing. Because it never
+*felt* like uncertainty to me. Not because I'm wired differently, but because of
 how I think the whole thing works.
 
 In my head, all of life is creating rules out of uncertainty to give ourselves
