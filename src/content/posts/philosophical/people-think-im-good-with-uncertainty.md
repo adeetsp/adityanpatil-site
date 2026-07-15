@@ -13,7 +13,7 @@ wrong.
 When I was running my own little consulting company, people would say it all the
 time — "wow, you're so good at uncertainty." Or the other version: "oh my god,
 you're so *brave* for doing this." And every time, my honest reaction was: it's not
-bravery. Just do the fucking thing. Like — just do the thing. Because it never
+bravery. You just do the thing. Like — just do the thing. Because it never
 *felt* like uncertainty to me. Not because I'm wired differently, but because of
 how I think the whole thing works.
 
